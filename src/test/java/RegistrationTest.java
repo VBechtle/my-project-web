@@ -1,6 +1,5 @@
-import API.tests.ApiBaseTest;
-import io.restassured.response.Response;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -17,8 +16,10 @@ public class RegistrationTest extends BaseTest{
         registrationPage.enterValueToUserPassword(newValidUserTeacher);
         registrationPage.tickCheckbox();
         registrationPage.clickOnSignUpButton();
-        ApiBaseTest apiBaseTest = new ApiBaseTest();
-        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
+        MainPage mainPage = new MainPage(driver);
+        assertTrue(mainPage.mainPageIsDisplayed());
+//        ApiBaseTest apiBaseTest = new ApiBaseTest();
+//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test
@@ -32,6 +33,10 @@ public class RegistrationTest extends BaseTest{
         registrationPage.enterValueToUserPassword(newValidUserStudent);
         registrationPage.tickCheckbox();
         registrationPage.clickOnSignUpButton();
+        MainPage mainPage = new MainPage(driver);
+        assertTrue(mainPage.mainPageIsDisplayed());
+//        ApiBaseTest apiBaseTest = new ApiBaseTest();
+//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test
@@ -101,6 +106,10 @@ public class RegistrationTest extends BaseTest{
         assertTrue(registrationPage.checkPasswordEyeIconIsVisible());
         registrationPage.tickCheckbox();
         registrationPage.clickOnSignUpButton();
+        MainPage mainPage = new MainPage(driver);
+        assertTrue(mainPage.mainPageIsDisplayed());
+//        ApiBaseTest apiBaseTest = new ApiBaseTest();
+//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test

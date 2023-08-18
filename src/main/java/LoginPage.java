@@ -22,6 +22,15 @@ public class LoginPage extends BasePage {
     private WebElement passwordEyeIconHidden;
     @FindBy(css = ".fa.show-password.active.fa-eye")
     private WebElement passwordEyeIconVisible;
+    @FindBy(css = "a[class='d-inline-block text-center sw-font-size-s sw-text-color-007bff hover:sw-text-color-007bff sw-font-family-default sw-font-weight-medium sw-padding-top-4xs sw-padding-bottom-4xs sw-letter-spacing-normal hover:sw-text-decoration-no-underline']")
+    private WebElement forgotPasswordLink;
+    @FindBy(css = "button[type='button']")
+    private WebElement recoveryPasswordButton;
+    @FindBy(css= "#sw-go-to-sign-up-btn")
+    private WebElement signUpButtonOnSignInPage;
+
+
+
 
     @Step("Click on SignIn button on the main page")
     public void clickOnMainSignInButton() {
@@ -51,9 +60,21 @@ public class LoginPage extends BasePage {
     public boolean checkPasswordEyeIconIsVisible() {
         return passwordEyeIconVisible.isEnabled();
     }
-
+    @Step("Check that signIn button on signIn page is visible")
     public boolean signInButtonOnSignInPageIsVisible() {
         return signInButton.isDisplayed();
+    }
+    @Step("Click on forgot password link")
+    public void clickOnForgotPasswordLink () {
+        forgotPasswordLink.click();
+    }
+    @Step("Check that recovery password button is visible")
+    public boolean recoveryPasswordButtonIsVisible() {
+        return recoveryPasswordButton.isDisplayed();
+    }
+    @Step("Click on signUp button on signIn page")
+    public void clickOnSignUpButtonOnSignInPage () {
+        signUpButtonOnSignInPage.click();
     }
 
     public void successLoginTeacher(User user) {

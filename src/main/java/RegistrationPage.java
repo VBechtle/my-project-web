@@ -70,6 +70,9 @@ public class RegistrationPage extends BasePage {
     public void clickOnSignUpButton() {
         signUpButton.click();
     }
+    public boolean signUpButtonIsDisplayed (){
+        return signUpButton.isDisplayed();
+    }
     public String passwordErrorMessageTextIsCorrect() {
         return passwordErrorMessage.getText();
     }

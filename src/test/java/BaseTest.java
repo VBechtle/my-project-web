@@ -1,5 +1,3 @@
-import API.tests.ApiBaseTest;
-import API.tests.DeleteUserTest;
 import io.qameta.allure.Attachment;
 import org.junit.After;
 import org.junit.AssumptionViolatedException;
@@ -35,30 +33,29 @@ public class BaseTest {
     }
 
 
-//    @Rule
-//    public TestWatcher screenShotOnFailure = new TestWatcher() {
-//        @Override
-//        protected void failed(Throwable e, Description description) {
-//            makeScreenshotOnFailure();
-//            driver.close();
-//            driver.quit();
-//        }
-//        @Override
-//        protected void skipped(AssumptionViolatedException e, Description description) {
-//            driver.close();
-//            driver.quit();
-//        }
-//        @Override
-//        protected void succeeded(Description description) {
-//            driver.close();
-//            driver.quit();
-//        }
-//        @Attachment
-//        public byte[] makeScreenshotOnFailure(){
-//            return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
-//        }
-//    };
-
+    @Rule
+    public TestWatcher screenShotOnFailure = new TestWatcher() {
+        @Override
+        protected void failed(Throwable e, Description description) {
+            makeScreenshotOnFailure();
+            driver.close();
+            driver.quit();
+        }
+        @Override
+        protected void skipped(AssumptionViolatedException e, Description description) {
+            driver.close();
+            driver.quit();
+        }
+        @Override
+        protected void succeeded(Description description) {
+            driver.close();
+            driver.quit();
+        }
+        @Attachment
+        public byte[] makeScreenshotOnFailure(){
+            return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+        }
+    };
 
 
     User validUserTeacher = new User("test@gmail.com", "123456", "");

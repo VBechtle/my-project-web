@@ -1,6 +1,4 @@
 import org.junit.Test;
-
-import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertTrue;
 
 public class MainPageTest extends BaseTest {
@@ -14,7 +12,7 @@ public class MainPageTest extends BaseTest {
     }
 
     @Test
-    public void signOut () throws InterruptedException {
+    public void signOut () {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.successLoginTeacher(validUserTeacher);
         MainPage mainPage = new MainPage(driver);
@@ -22,6 +20,5 @@ public class MainPageTest extends BaseTest {
         mainPage.clickOnHeaderUserAvatar();
         mainPage.clickOnSignOutButton();
         assertTrue(loginPage.signInButtonOnSignInPageIsVisible());
-        sleep(5000);
     }
 }

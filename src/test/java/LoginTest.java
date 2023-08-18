@@ -2,24 +2,22 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
-import static java.lang.Thread.sleep;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class LoginTest extends BaseTest {
 
-    MainPage mainPage = new MainPage(driver);
+public class LoginTest extends BaseTest {
 
     @Test @DisplayName("Success login teacher")
     @Description("Login with valid data")
-    public void loginWithValidDataTeacher() throws InterruptedException {
+    public void loginWithValidDataTeacher() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickOnMainSignInButton();
         loginPage.enterValueToEmail(validUserTeacher);
         loginPage.enterValueToPassword(validUserTeacher);
         loginPage.clickOnSignInButton();
-//        sleep(5000);
-//        assertTrue(mainPage.mainPageIsDisplayed());
+        MainPage mainPage = new MainPage(driver);
+        assertTrue(mainPage.mainPageIsDisplayed());
     }
 
     @Test @DisplayName("Success login student")
@@ -30,6 +28,7 @@ public class LoginTest extends BaseTest {
         loginPage.enterValueToEmail(validUserStudent);
         loginPage.enterValueToPassword(validUserStudent);
         loginPage.clickOnSignInButton();
+        MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
     }
 
@@ -65,8 +64,30 @@ public class LoginTest extends BaseTest {
         loginPage.clickOnPasswordEyeIconHidden();
         assertTrue(loginPage.checkPasswordEyeIconIsVisible());
         loginPage.clickOnSignInButton();
+        MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
     }
-////    forgot password
-////    signUpButton
+
+    @Test @DisplayName("Check forgot password button")
+    @Description("Check that the button redirect to the password recovery page")
+    public void forgotPasswordButton() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickOnMainSignInButton();
+        loginPage.enterValueToEmail(validUserTeacher);
+        loginPage.enterValueToPassword(validUserTeacher);
+        loginPage.clickOnForgotPasswordLink();
+        assertTrue(loginPage.recoveryPasswordButtonIsVisible());
+    }
+
+    @Test @DisplayName("Check signUp button on signIn page")
+    @Description("Check that the signUp button on the signIn page redirect to signUp page")
+    public void signUpButtonOnSignInPage() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickOnMainSignInButton();
+        loginPage.enterValueToEmail(validUserTeacher);
+        loginPage.enterValueToPassword(validUserTeacher);
+        loginPage.clickOnSignUpButtonOnSignInPage();
+        RegistrationPage registrationPage = new RegistrationPage(driver);
+        assertTrue(registrationPage.signUpButtonIsDisplayed());
+    }
 }

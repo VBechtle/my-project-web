@@ -7,21 +7,22 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
-//    @FindBy(className = "css-w0pj6f")
-//    WebElement mainPageLoggedInUser;
-
     @FindBy(css = ".MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-17qbyv7")
+    WebElement mainPageLoggedInUser;
+
+    @FindBy(xpath = "//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-17qbyv7']")
     WebElement mainPageHeaderUserAvatarButton;
 
     @FindBy(xpath = "//span[normalize-space()='Sign Out']")
     WebElement signOutButton;
 
     public boolean mainPageIsDisplayed() {
-        return mainPageHeaderUserAvatarButton.isDisplayed();
+        return mainPageLoggedInUser.isDisplayed();
     }
 
-    public void clickOnHeaderUserAvatar() {
+    public boolean clickOnHeaderUserAvatar() {
         mainPageHeaderUserAvatarButton.click();
+        return false;
     }
 
     public void clickOnSignOutButton() {
