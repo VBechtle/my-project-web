@@ -60,7 +60,7 @@ public class BaseTest {
         }
     };
 
-    User validUserTeacher = new User("test@gmail.com", "123456", "");
+    User validUserTeacher = new User("test_teacher@gmail.com", "123456", "");
     User validUserStudent = new User("malik@example.com", "123456", "");
     User invalidUserPassword = new User("test@gmail.com", "111111", "");
     User invalidUserEmail = new User("test.com", "123456", "");

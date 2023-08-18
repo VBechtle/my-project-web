@@ -36,7 +36,7 @@ public class RegistrationTest extends BaseTest{
         MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
         BaseTest BaseTest = new BaseTest();
-        BaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
+        BaseTest.deleteExistingUser(200, newValidUserStudent.getUserEmail());
     }
 
     @Test
@@ -113,6 +113,7 @@ public class RegistrationTest extends BaseTest{
     }
 
     @Test
+
     public void registrationWithAllEmptyFields() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         registrationPage.clickOnMainSignUpButton();
