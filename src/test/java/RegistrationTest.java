@@ -18,8 +18,8 @@ public class RegistrationTest extends BaseTest{
         registrationPage.clickOnSignUpButton();
         MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
-//        ApiBaseTest apiBaseTest = new ApiBaseTest();
-//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
+        BaseTest BaseTest = new BaseTest();
+        BaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test
@@ -35,8 +35,8 @@ public class RegistrationTest extends BaseTest{
         registrationPage.clickOnSignUpButton();
         MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
-//        ApiBaseTest apiBaseTest = new ApiBaseTest();
-//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
+        BaseTest BaseTest = new BaseTest();
+        BaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test
@@ -108,8 +108,8 @@ public class RegistrationTest extends BaseTest{
         registrationPage.clickOnSignUpButton();
         MainPage mainPage = new MainPage(driver);
         assertTrue(mainPage.mainPageIsDisplayed());
-//        ApiBaseTest apiBaseTest = new ApiBaseTest();
-//        apiBaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
+        BaseTest BaseTest = new BaseTest();
+        BaseTest.deleteExistingUser(200, newValidUserTeacher.getUserEmail());
     }
 
     @Test

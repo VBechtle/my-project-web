@@ -1,4 +1,9 @@
 import io.qameta.allure.Attachment;
+import io.restassured.RestAssured;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.junit.After;
 import org.junit.AssumptionViolatedException;
 import org.junit.Before;
@@ -27,11 +32,9 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @After
     public void tearDown() {
         driver.quit();
     }
-
 
     @Rule
     public TestWatcher screenShotOnFailure = new TestWatcher() {
@@ -57,7 +60,6 @@ public class BaseTest {
         }
     };
 
-
     User validUserTeacher = new User("test@gmail.com", "123456", "");
     User validUserStudent = new User("malik@example.com", "123456", "");
     User invalidUserPassword = new User("test@gmail.com", "111111", "");
@@ -65,4 +67,29 @@ public class BaseTest {
     User newValidUserTeacher = new User("test.teacher@gmail.com", "123456", "Test Teacher");
     User newValidUserStudent = new User("test.student@gmail.com", "123456", "Test Student");
     User newInvalidUser = new User("test.studentgmail.com", "123", "");
+
+
+    static RequestSpecification specification = new RequestSpecBuilder()
+            .setUrlEncodingEnabled(false)
+            .setBaseUri("https://studio-api.softr.io/v1/api")
+            .setContentType(ContentType.JSON)
+            .addHeader("Softr-Api-Key", "khIbAyJIU5CIuh1oDuBRx1s49")
+            .addHeader("Softr-Domain", "jere237.softr.app" )
+            .build();
+    public Response deleteRequest(String endPoint, int responseCode) {
+        Response response = RestAssured.given()
+                .spec(specification)
+                .when()
+                .log().all()
+                .delete(endPoint)
+                .then()
+                .log().all()
+                .extract().response();
+        response.then().assertThat().statusCode(responseCode);
+        return response;
+    }
+    public void deleteExistingUser(Integer responseCode, String email) {
+        String endpoint = "/users/";
+        deleteRequest(endpoint + email, responseCode);
+    }
 }
