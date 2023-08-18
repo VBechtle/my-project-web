@@ -19,7 +19,7 @@ import java.time.Duration;
 
 public class BaseTest {
     ChromeDriver driver;
-    String BASE_URL = "https://jere237.softr.app";
+    String BASE_URL = "https://erich416.softr.app";
 
     @Before
     public void setUp(){
@@ -60,10 +60,10 @@ public class BaseTest {
         }
     };
 
-    User validUserTeacher = new User("test@gmail.com", "123456", "");
+    User validUserTeacher = new User("roxanne@example.com", "123456", "");
     User validUserStudent = new User("malik@example.com", "123456", "");
-    User invalidUserPassword = new User("test@gmail.com", "111111", "");
-    User invalidUserEmail = new User("test.com", "123456", "");
+    User invalidUserPassword = new User("roxanne@example.com", "111111", "");
+    User invalidUserEmail = new User("roxanneexample.com", "123456", "");
     User newValidUserTeacher = new User("test.teacher@gmail.com", "123456", "Test Teacher");
     User newValidUserStudent = new User("test.student@gmail.com", "123456", "Test Student");
     User newInvalidUser = new User("test.studentgmail.com", "123", "");
@@ -74,7 +74,7 @@ public class BaseTest {
             .setBaseUri("https://studio-api.softr.io/v1/api")
             .setContentType(ContentType.JSON)
             .addHeader("Softr-Api-Key", "khIbAyJIU5CIuh1oDuBRx1s49")
-            .addHeader("Softr-Domain", "jere237.softr.app" )
+            .addHeader("Softr-Domain", "erich416.softr.app" )
             .build();
     public Response deleteRequest(String endPoint, int responseCode) {
         Response response = RestAssured.given()
